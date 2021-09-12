@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main(){
+func main() {
 	//declare variables
 	var str string
 	var n, m int
@@ -36,9 +36,9 @@ func main(){
 
 	//declare multiple variables
 	var (
-		name string
+		name  string
 		email string
-		age int
+		age   int
 	)
 
 	name = "john"
