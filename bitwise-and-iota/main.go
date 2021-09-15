@@ -5,9 +5,9 @@ import "fmt"
 const ( //bitwise for calculate KB, MB,GB and TB
 	_  = iota // 0
 	KB = 1 << (iota * 10)
-	MB = 1 << (iota * 10)
-	GB = 1 << (iota * 10)
-	TB = 1 << (iota * 10)
+	MB
+	GB
+	TB
 )
 
 func main() {
