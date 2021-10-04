@@ -30,17 +30,18 @@ func TestArea(t *testing.T) {
 	//Table drive test serve para quando se quer testar coisas que seguem um padrão.
 	// Nesse caso o padrão é o mesmo, chamar o mesmo método
 	testeArea := []struct {
-		forma    Forma
-		esperado float64
+		forma   Forma
+		temArea float64
 	}{
-		{Retangulo{10.0, 10.0}, 100.0},
-		{Circulo{10}, expectedCircleArea},
+		{forma: Retangulo{Altura: 10.0, Largura: 10.0}, temArea: 100.0},
+		{forma: Circulo{Raio: 10}, temArea: expectedCircleArea},
+		{forma: Triangulo{Base: 12, Altura: 6}, temArea: 36},
 	}
 
 	for _, tt := range testeArea {
 		result := tt.forma.Area()
-		if result != tt.esperado {
-			t.Errorf("resultado %.2f esperado %.2f", result, tt.esperado)
+		if result != tt.temArea {
+			t.Errorf("\n%#v\nresultado %.2f\nesperado %.2f", tt.forma, result, tt.temArea)
 		}
 	}
 
