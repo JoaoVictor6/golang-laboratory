@@ -14,6 +14,12 @@ func TestWallet(t *testing.T) {
 		}
 	}
 
+	confirmaErroInexistente := func(t *testing.T, erro error) {
+		if erro != nil {
+			t.Errorf("\nErro inesperador recebido: \n\t%s", erro)
+		}
+	}
+
 	confirmaErro := func(t *testing.T, erro error, expectedErrorMessage error) {
 		t.Helper()
 
@@ -34,13 +40,13 @@ func TestWallet(t *testing.T) {
 
 	})
 
-	t.Run("Retirar", func(t *testing.T) {
+	t.Run("Retirar com saldo suficiente", func(t *testing.T) {
 		const esperado Bitcoin = 0
 		wallet := Carteira{Bitcoin(10)}
 		erro := wallet.Retirar(Bitcoin(10))
 
 		confirmaSaldo(t, wallet, esperado)
-		confirmaErro(t, erro, ErrorSaldoInsuficiente)
+		confirmaErroInexistente(t, erro)
 	})
 
 	t.Run("Retirar mais que o saldo", func(t *testing.T) {

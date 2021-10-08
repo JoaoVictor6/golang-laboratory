@@ -3,8 +3,6 @@ package main
 import (
 	"errors"
 	"fmt"
-
-	"github.com/kisielk/errcheck/errcheck"
 )
 
 var ErrorSaldoInsuficiente = errors.New("não é possivel retirar: saldo insuficiente")
@@ -45,5 +43,4 @@ func (c *Carteira) Retirar(quantidade Bitcoin) error {
 }
 
 func main() {
-	errcheck.Checker()
 }
