@@ -26,6 +26,15 @@ func (d Dicionario) Busca(palavraChave string) (string, error) {
 	return palavra, nil
 }
 
+func (d Dicionario) Delete(palavraChave string) error {
+	_, err := d.Busca(palavraChave)
+	if err != nil {
+		return ErrPalavraInexistente
+	}
+	delete(d, palavraChave)
+	return nil
+}
+
 func (d Dicionario) Adiciona(palavraChave, palavra string) error {
 	_, existe := d[palavraChave]
 	if existe {

@@ -100,3 +100,24 @@ func TestUpdate(t *testing.T) {
 		comparaErro(t, err, ErrPalavraInexistente)
 	})
 }
+
+func TestDelete(t *testing.T) {
+	t.Run("Deletando uma chave existente", func(t *testing.T) {
+		const palavraChave string = "teste"
+		const definicao string = "apenas um teste"
+		dicionario := Dicionario{palavraChave: definicao}
+
+		err := dicionario.Delete(palavraChave)
+
+		comparaErro(t, err, nil)
+	})
+	t.Run("Deletando uma chave inexistente", func(t *testing.T) {
+		const palavraChave string = "teste"
+		const definicao string = "apenas um teste"
+		dicionario := Dicionario{palavraChave: definicao}
+
+		err := dicionario.Delete("inexistente")
+
+		comparaErro(t, err, ErrPalavraInexistente)
+	})
+}
